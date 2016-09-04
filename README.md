@@ -35,6 +35,7 @@ sudo ln -s /usr/local/bin/python /usr/bin/python
 
 ## Execution
 ```
+eval "$(docker-machine env test-docker)"
 ansible-playbook site.yml
 ```
 
