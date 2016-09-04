@@ -1,0 +1,6 @@
+Host test-docker
+HostName 192.168.99.101
+User docker
+UserKnownHostsFile /dev/null
+IdentityFile ~/.docker/machine/machines/test-docker/id_rsa
+StrictHostKeyChecking no

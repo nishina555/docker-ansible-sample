@@ -1,0 +1,19 @@
+---
+- hosts: docker_host
+  become: yes
+  remote_user: docker
+  tasks:
+    - name: deploy centos container
+      docker: image=centos:centos6 name=test-container ports=80:80 expose=80 tty=yes
+
+- hosts: test-container
+  connection: docker
+  tasks:
+    - name: install packages
+      yum: name={{item}} state=installed
+      with_items:
+      - httpd
+    - name: start services
+      service: name={{item}} enabled=yes state=started
+      with_items:
+      - httpd
